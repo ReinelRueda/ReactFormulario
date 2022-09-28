@@ -15,7 +15,10 @@ const Lista = () => {
     <>
       <Formulario agregarDatos={agregarDatos} />
       {lista.map((item) => (
-        <li key={1}>{item.nombre}{item.apellido}</li>
+        <li key={Math.random()}>
+          {item.nombre}
+          {item.apellido}
+        </li>
       ))}
     </>
   );

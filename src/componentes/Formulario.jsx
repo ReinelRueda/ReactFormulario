@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
 const Formulario = ({ agregarDatos }) => {
-  const [datos, setDatos] = useState({
-    nombre: "",
-    apellido: "",
-  });
+  const initialState = {
+    id: Math.random(),
+    nombre: "reinel ",
+    apellido: "rueda",
+  };
+  const [datos, setDatos] = useState(initialState);
 
   const handleChange = (e) => {
     setDatos({

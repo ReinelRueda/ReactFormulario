@@ -15,7 +15,7 @@ const Lista = () => {
     <>
       <Formulario agregarDatos={agregarDatos} />
       {lista.map((item) => (
-        <li key={1}>{item.nombre}</li>
+        <li key={1}>{item.nombre}{item.apellido}</li>
       ))}
     </>
   );

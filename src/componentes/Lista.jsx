@@ -11,13 +11,17 @@ const Lista = () => {
 
     console.log(lista);
   };
+  function eliminar(id) {
+    setLista((old) => old.filter((item) => item.id !== id));
+  }
   return (
     <>
       <Formulario agregarDatos={agregarDatos} />
       {lista.map((item) => (
-        <li key={Math.random()}>
+        <li key={item.id}>
           {item.nombre}
           {item.apellido}
+          <button onClick={() => eliminar(item.id)}>X</button>
         </li>
       ))}
     </>

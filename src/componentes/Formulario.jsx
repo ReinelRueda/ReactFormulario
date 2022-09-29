@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Formulario = ({ agregarDatos }) => {
   const initialState = {
-    id: Math.random(),
     nombre: "reinel ",
     apellido: "rueda",
   };
@@ -17,7 +16,11 @@ const Formulario = ({ agregarDatos }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    agregarDatos(datos);
+    agregarDatos({
+      nombre: datos.nombre,
+      apellido: datos.apellido,
+      id: Date.now(),
+    });
   };
 
   return (

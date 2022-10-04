@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import Lista from "./Lista";
+import Tareas from "./Tareas";
 
-const Formulario = ({ agregarDatos }) => {
-  const initialState = {
-    nombre: "reinel ",
-    apellido: "rueda",
-  };
-  const [datos, setDatos] = useState(initialState);
+const Formulario = ({ agregarDatos, lista, eliminar }) => {
+  const [datos, setDatos] = useState({
+    nombre: "",
+    apellido: "",
+  });
 
   const handleChange = (e) => {
     setDatos({
@@ -16,12 +18,14 @@ const Formulario = ({ agregarDatos }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     agregarDatos({
       nombre: datos.nombre,
       apellido: datos.apellido,
       id: Date.now(),
     });
   };
+  console.log(datos);
 
   return (
     <div>
@@ -41,6 +45,8 @@ const Formulario = ({ agregarDatos }) => {
         />
         <button>Enviar</button>
       </form>
+
+      <Tareas lista={lista} eliminar={eliminar} />
     </div>
   );
 };

@@ -4,10 +4,14 @@ import Lista from "./Lista";
 import Tareas from "./Tareas";
 
 const Formulario = ({ agregarDatos, lista, eliminar }) => {
-  const [datos, setDatos] = useState({
-    nombre: "",
-    apellido: "",
-  });
+  const actualizar = (item) => {
+    setDatos({
+      nombre: item.nombre,
+      apellido: item.apellido,
+    });
+  };
+
+  const [datos, setDatos] = useState({ nombre: "", apellido: "", id: {} });
 
   const handleChange = (e) => {
     setDatos({
@@ -25,7 +29,6 @@ const Formulario = ({ agregarDatos, lista, eliminar }) => {
       id: Date.now(),
     });
   };
-  console.log(datos);
 
   return (
     <div>
@@ -46,7 +49,7 @@ const Formulario = ({ agregarDatos, lista, eliminar }) => {
         <button>Enviar</button>
       </form>
 
-      <Tareas lista={lista} eliminar={eliminar} />
+      <Tareas lista={lista} eliminar={eliminar} actualizar={actualizar} />
     </div>
   );
 };

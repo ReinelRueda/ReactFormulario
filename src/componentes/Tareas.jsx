@@ -1,6 +1,6 @@
 import React from "react";
 
-const Tareas = ({ lista, eliminar }) => {
+const Tareas = ({ lista, eliminar, actualizar }) => {
   return (
     <>
       {lista.map((item) => (
@@ -8,7 +8,17 @@ const Tareas = ({ lista, eliminar }) => {
           {item.nombre}
           {item.apellido}
           <button onClick={() => eliminar(item.id)}>X</button>
-          <button onClick={() => actualizar(item)}>O</button>
+          <button
+            onClick={() =>
+              actualizar({
+                nombre: item.nombre,
+                apellido: item.apellido,
+                id: item.id,
+              })
+            }
+          >
+            O
+          </button>
         </li>
       ))}
     </>

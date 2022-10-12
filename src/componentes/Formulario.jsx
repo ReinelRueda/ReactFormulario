@@ -22,12 +22,22 @@ const Formulario = ({ agregarDatos, lista, eliminar }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    agregarDatos({
-      nombre: datos.nombre,
-      apellido: datos.apellido,
-      id: Date.now(),
-    });
+    console.log(datos.nombre);
+    if (datos.nombre === "") {
+      console.log("no hay datos para agregar");
+    } else {
+      console.log("esta lleno");
+      agregarDatos({
+        nombre: datos.nombre,
+        apellido: datos.apellido,
+        id: Date.now(),
+      });
+      setDatos({
+        nombre: "",
+        apellido: "",
+        id: {},
+      });
+    }
   };
 
   return (
@@ -40,6 +50,7 @@ const Formulario = ({ agregarDatos, lista, eliminar }) => {
           onChange={handleChange}
           value={datos.nombre}
         />
+
         <input
           type="text"
           name="apellido"
